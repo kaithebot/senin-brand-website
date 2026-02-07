@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[1609,["/senin-brand-website/_next/static/chunks/7995d7e051a6a884.js"],"default"]
 3:I[84195,["/senin-brand-website/_next/static/chunks/7995d7e051a6a884.js"],"default"]
-0:{"buildId":"Rskbfc7VpUOhe8_QA2pmT","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"KGPq7gaVPHhSJuDfSqb8n","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
