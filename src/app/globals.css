@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --magic-blue: #3250b0;
+  --magic-purple: #9a66d4;
+  --antique-gold: #aa8267;
+  --cozy-cream: #e9e1d0;
+  --soft-brown: #604b43;
+  --ink-black: #09090d;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--magic-blue) 0%, var(--magic-purple) 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
