@@ -8,12 +8,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Story covers data
 const storyCovers = [
-  { id: 1, title: "Kosmos Macərası", emoji: "🚀", color: "from-blue-500 to-purple-600", age: "6-10" },
-  { id: 2, title: "Peri Dünyası", emoji: "🧚‍♀️", color: "from-pink-400 to-rose-500", age: "4-8" },
-  { id: 3, title: "Dinozavr Səfəri", emoji: "🦕", color: "from-green-400 to-emerald-600", age: "5-9" },
-  { id: 4, title: "Super Qəhrəman", emoji: "🦸", color: "from-red-500 to-orange-500", age: "7-12" },
-  { id: 5, title: "Pirat Xəzinəsi", emoji: "🏴‍☠️", color: "from-yellow-400 to-amber-600", age: "6-11" },
-  { id: 6, title: "Şahzadə Nağılı", emoji: "👸", color: "from-purple-400 to-pink-500", age: "4-8" },
+  { id: 1, title: "Kosmos Macərası", emoji: "🚀", color: "from-blue-500 to-purple-600", age: "6-10", description: "Uşağınız kosmosun qəhrəmanı olur, planetlər kəşf edir və yadplanetlilərlə dostluq edir." },
+  { id: 2, title: "Peri Dünyası", emoji: "🧚‍♀️", color: "from-pink-400 to-rose-500", age: "4-8", description: "Sehrli peri çiçəklər və sehrli meşədə uşağınız very special bir macəraya atılır." },
+  { id: 3, title: "Dinozavr Səfəri", emoji: "🦕", color: "from-green-400 to-emerald-600", age: "5-9", description: "Zaman maşını ilə keçmişə səyahət, dinozavrlarla dostluq və qədim dünyanın sirrləri." },
+  { id: 4, title: "Super Qəhrəman", emoji: "🦸", color: "from-red-500 to-orange-500", age: "7-12", description: "Özünəməxsus super güclər ilə şəhəri qorumaq və qəhrəmanlıq macərası." },
+  { id: 5, title: "Pirat Xəzinəsi", emoji: "🏴‍☠️", color: "from-yellow-400 to-amber-600", age: "6-11", description: "Xəritə ilə gizli ada axtarışı, dəryada macəra və qədim xəzinəni tapmaq." },
+  { id: 6, title: "Şahzadə Nağılı", emoji: "👸", color: "from-purple-400 to-pink-500", age: "4-8", description: "Şahzadə və əjdaha arasında dostluq, qəsrin sirrləri və sehrli aləm." },
+];
+
+// Testimonials
+const testimonials = [
+  { name: "Günay M.", text: "Qızım Leyla kitabını görəndə ağladı. Deyir 'Mənim şəklim var!' Həqiqətən unikal hədiyyə oldu.", rating: 5 },
+  { name: "Rəşad K.", text: "2 gün ərzində gəldi, keyfiyyət əla. Oğlum hər gecə yatmazdan əvvəl oxuyur.", rating: 5 },
+  { name: "Nigar Ə.", text: "Artıq 3-cü kitabı sifariş etdim. Hər dəfə fərqli hekayə, hər dəfə gözəl.", rating: 5 },
 ];
 
 export default function Home() {
@@ -21,14 +28,15 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Hero animations
     const ctx = gsap.context(() => {
+      // Hero animations
       gsap.from(".hero-title", {
         y: 100,
         opacity: 0,
-        duration: 1,
+        duration: 1.2,
         ease: "power4.out",
       });
       
@@ -47,7 +55,30 @@ export default function Home() {
         delay: 0.6,
         ease: "back.out(1.7)",
       });
-    }, heroRef);
+
+      // Scroll-triggered animations
+      gsap.from(".carousel-title", {
+        scrollTrigger: {
+          trigger: carouselRef.current,
+          start: "top 80%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+      });
+
+      gsap.from(".story-card", {
+        scrollTrigger: {
+          trigger: carouselRef.current,
+          start: "top 70%",
+        },
+        y: 80,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+    });
 
     return () => ctx.revert();
   }, []);
